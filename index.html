@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>ChatBot</title>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="bot-message">ChatGIT:Hello, I'm ChatGIT! An A.I made for Github Users == [https://github.com/AR-DEV-1/ChatGIT/]. How can I assist you today? </div>
+    <div class="user-message">User: </div>
+    
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button id="send-button">Send</button>
+  </div>
+  <script>
+
+    class ChatBot {
+
+      constructor(name, greeting) {
+        this.name = name;
+        this.greeting = greeting;
+      }
+
+      // Define the method to generate a response
+      respond(userInput) {
+        // If the user input is empty, return the greeting
+        if (!userInput) {
+          return this.greeting;
+        }
+        
+        return "I'm sorry, I don't understand. Please ask me something else.";
+      }
+    }
+
+    // Create an instance of the chatbot with a name and a greeting
+    const bot = new ChatBot("ChatGIT", "Hello, I'm ChatGit! An A.I made for Github Users == [https://github.com/AR-DEV-1/ChatGIT/]. How can I assist you today?");
+
+    // Get references to HTML elements
+    const chatContainer = document.getElementById("chat-container");
+    const userInputField = document.getElementById("user-input");
+    const sendButton = document.getElementById("send-button");
+
+    // Function to add a user message to the chat container
+    function addUserMessage(message) {
+      const userMessage = document.createElement("div");
+      userMessage.className = "user-message";
+      userMessage.textContent = `User: ${message}`;
+      chatContainer.appendChild(userMessage);
+    }
+
+    // Function to add a bot message to the chat container
+    function addBotMessage(message) {
+      const botMessage = document.createElement("div");
+      botMessage.className = "bot-message";
+      botMessage.textContent = `ChatGIT: ${message}`;
+      chatContainer.appendChild(botMessage);
+    }
+
+    // Function to handle user input and generate bot responses
+    function handleUserInput() {
+      const userInput = userInputField.value;
+      if (userInput) {
+        addUserMessage(userInput);
+        userInputField.value = ""; // Clear the input field
+
+        // Generate the bot response
+        const botResponse = bot.respond(userInput);
+
+        // Add the bot response to the chat container
+        addBotMessage(botResponse);
+
+        // Scroll to the bottom of the chat container to show the latest messages
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+    }
+
+    // Event listener for sending a message
+    sendButton.addEventListener("click", handleUserInput);
+
+    // Event listener for pressing Enter key in the input field
+    userInputField.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        handleUserInput();
+      }
+    });
+  </script>
+</body>
+</html>
