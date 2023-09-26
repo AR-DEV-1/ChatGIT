@@ -8,9 +8,7 @@
 </head>
 <body>
  <div class="chat-container" id="chat-container">
-    <div class="bot-message">ChatGIT:Hello, I'm ChatGIT! An A.I made for Github Users. How can I assist you today? </div>
-    <div class="user-message">User: </div>
-    
+  
     <input type="text" id="user-input" placeholder="Type your message...">
     <button id="send-button">Send</button>
   </div>
@@ -36,7 +34,7 @@
     }
 
     // Create an instance of the chatbot with a name and a greeting
-    const bot = new ChatBot("ChatGIT", "Hello, I'm ChatGit! An A.I made for Github Users == [https://github.com/AR-DEV-1/ChatGIT/]. How can I assist you today?");
+    const bot = new ChatBot("ChatGIT", "Hello, I'm ChatGit! An A.I made for Github Users. How can I assist you today?");
 
     // Get references to HTML elements
     const chatContainer = document.getElementById("chat-container");
